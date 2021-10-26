@@ -5,12 +5,12 @@
 <section
   class="w-full flex-col p-4 flex justify-between items-center sm:flex-row"
 >
-  <div class="">
+  <div class="py-1">
     <a href="/" class="text-white px-5">Home</a>
     <a href="/collection" class="text-white px-5">Collection</a>
   </div>
 
-  <div class="">
+  <div class="py-1">
     {#if $user?.loggedIn}
       <span class="px-4 text-white">
         Hello <span class="text-yellow-300">{$user.addr}</span>

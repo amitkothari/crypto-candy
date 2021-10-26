@@ -1,22 +1,22 @@
 <script>
   import { user } from '../store.js';
-  import Card from '../components/Card.svelte';
   import Modal from '../components/Modal.svelte';
   import UserCollection from '../components/UserCollection.svelte';
   import Loader from '../components/Loader.svelte';
   import {
     getCollection,
     createCollection,
-    getUserCandies,
   } from '../flow/flow';
 
   let isProcessingTransaction = false;
-  let userCollection;
+  let collectionCreated = false;
   const handleCreateCollection = async () => {
     isProcessingTransaction = true;
-    await createCollection($user.addr);
-    isProcessingTransaction = false;
-    userCollection = true;
+    try {
+      await createCollection($user.addr);
+      collectionCreated = true;
+    } catch (error) {}
+    isProcessingTransaction = false;    
   };
 
 </script>
@@ -29,7 +29,7 @@
   {#await getCollection($user.addr)}
     <Loader />
   {:then hasCollection}
-    {#if hasCollection || userCollection}
+    {#if hasCollection || collectionCreated}
       <UserCollection />
     {:else}
       <button
@@ -40,5 +40,5 @@
     {/if}
   {/await}
 {:else}
-  <span class="text-white text-4xl">Please login to view your collection.</span>
+  <span class="text-white text-4xl text-center">Please login to view your collection.</span>
 {/if}

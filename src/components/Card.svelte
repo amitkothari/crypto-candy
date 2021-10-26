@@ -16,7 +16,7 @@
   {#if handleBuyCandy}
     <button
       data-testid={`buy-candy-${varietyId}`}
-      class="text-white border-2 border-white px-20 py-2 rounded-full max-w-md"
+      class="text-white border-2 border-white px-4 py-2 rounded-full"
       on:click={() => handleBuyCandy(varietyId, price)}>
       <span class="flex">
         <object width="24" height="24" title="Buy" data="cart.svg" type="image/svg+xml" />
