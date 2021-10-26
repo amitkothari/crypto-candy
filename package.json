@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack serve --content-base public",
+    "start": "webpack serve --content-base public",
     "format": "prettier --write --plugin-search-dir=. ./",
     "test": "jest",
     "test:contract": "jest -c jest.config.contract.js",
     "cypress:run": "cypress run -- --browser chrome --headless",
-    "cypress:e2e": "run-p dev cypress:run"
+    "cypress:e2e": "run-p start cypress:run"
   },
   "dependencies": {
     "@onflow/fcl": "0.0.77",
