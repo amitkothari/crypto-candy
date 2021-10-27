@@ -25,7 +25,7 @@ https://github.com/amitkothari/crypto-candy.git
 2. Install dependencies
 
 ```
-npm run install
+npm install
 ```
 
 3. Run the app
@@ -55,7 +55,7 @@ Cadence scripts and transactions are tested using [flow-js-testing](https://gith
 3. Run end to end tests
 
 ```
-npm run crypress:e2e
+npm run cypress:e2e
 ```
 
 The app uses [cypress](https://github.com/cypress-io/cypress) for end-to-end tests.
