@@ -85,21 +85,35 @@ describe('Home', () => {
     });
 
     describe('and user has a collection', () => {
-      beforeEach(async () => {
-        getCollection.mockReturnValue(true);
-        await fireEvent.click(buyCandyButton);
+      describe('and candy minted successfully', () => {
+        beforeEach(async () => {
+          getCollection.mockReturnValue(true);
+          await fireEvent.click(buyCandyButton);
+        });
+
+        it('should authenticate user', () => {
+          expect(fcl.authenticate).toBeCalled();
+        });
+
+        it('should get user collection', () => {
+          expect(getCollection).toBeCalled();
+        });
+
+        it('should mint candy', () => {
+          expect(mintCandy).toBeCalledWith(candy.varietyId, candy.price);
+        });
       });
 
-      it('should authenticate user', () => {
-        expect(fcl.authenticate).toBeCalled();
-      });
+      describe('and failed to mint candy', () => {
+        beforeEach(async () => {
+          mintCandy.mockRejectedValue(new Error());
+          getCollection.mockReturnValue(true);
+          await fireEvent.click(buyCandyButton);
+        });
 
-      it('should get user collection', () => {
-        expect(getCollection).toBeCalled();
-      });
-
-      it('should mint candy', () => {
-        expect(mintCandy).toBeCalledWith(candy.varietyId, candy.price);
+        it('should render error message', () => {
+          expect(home.getByTestId('error-alert')).toBeInTheDocument();
+        });
       });
     });
   });

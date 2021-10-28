@@ -14,7 +14,7 @@
 <Router {url}>
   <div class="h-full min-h-screen flex flex-col bg-blue-900">
     <Header />
-    <div class="flex flex-1 justify-center items-center">
+    <div class="flex flex-1">
       <Route path="collection" component={Collection} />
       <Route path="/"><Home /></Route>
     </div>

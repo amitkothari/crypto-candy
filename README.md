@@ -124,6 +124,10 @@ flow transactions send-signed ./signed.rlp -n testnet
 
 Please refer to the [docs](https://docs.onflow.org/flow-cli/build-transactions/) for more details.
 
+## Troubleshooting
+
+- If you get an error `gRPC requires HTTP/2` or are unable to run the contract tests, please make sure that the emulator is not already running.
+
 ## Acknowledgement
 
 This project is heavy inspired by [crypto dappy](https://github.com/bebner/crypto-dappy).
