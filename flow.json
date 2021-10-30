@@ -1,0 +1,44 @@
+{
+  "emulators": {
+    "default": {
+      "port": 3569,
+      "serviceAccount": "emulator-account"
+    }
+  },
+  "contracts": {
+    "CandyContract": "./cadence/contracts/CandyContract.cdc",
+    "FUSD": {
+      "source": "./cadence/contracts/FUSD.cdc",
+      "aliases": {
+        "testnet": "0xe223d8a629e49c68"
+      }
+    },
+    "FungibleToken": {
+      "source": "./cadence/contracts/FungibleToken.cdc",
+      "aliases": {
+        "testnet": "9a0766d93b6608b7",
+        "emulator": "ee82856bf20e2aa6"
+      }
+    }
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "f85ea21e3c9c1fdc67424d579a9d1bf4bdecf80a1f3c2441aa155cbb6474cb36"
+    }
+  },
+  "deployments": {
+    "emulator": {
+      "emulator-account": [
+        "CandyContract",
+        "FUSD",
+        "FungibleToken"
+      ]
+    }
+  }
+}
